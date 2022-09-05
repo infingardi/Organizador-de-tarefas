@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -19,8 +20,12 @@ public class TaskController {
     private final TaskService taskService;
 
     @PostMapping
-    public ResponseEntity<Task> create(@RequestBody Task task) {
-        return ResponseEntity.status(200).body(taskService.create(task));
+    public ResponseEntity<Task> create(@RequestBody @Valid Task task) {
+        try {
+            return ResponseEntity.status(200).body(taskService.create(task));
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 
     @GetMapping("/{userId}")

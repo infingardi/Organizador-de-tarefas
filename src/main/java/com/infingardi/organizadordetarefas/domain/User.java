@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -20,11 +23,16 @@ public class User implements Serializable {
     private UUID id;
 
     @Column(nullable = false)
+    @NotEmpty(message = "Username cannot be empty")
     private String username;
 
     @Column(nullable = false)
+    @NotEmpty(message = "Email cannot be empty")
+    @Email(message = "Email not in a valid format")
     private String email;
 
     @Column(nullable = false)
+    @NotEmpty(message = "Password cannot be empty")
+    @Size(min = 6, message = "Password must be at least 6 length")
     private String password;
 }
