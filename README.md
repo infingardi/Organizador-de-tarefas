@@ -15,6 +15,16 @@ O objetivo do projeto foi criar a parte do backend de um aplicativo do tipo ToDo
   <li>Docker</li>
 </ul>
 
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] DockerFile
+- [x] Sistema de login
+- [x] Crud básico de tasks
+- [ ] Testes unitários (em andamento)
+
+<!-- CONTRIBUTING -->
+
 <h2>Autor</h2>
 
 <h4>Igor Infingardi</h4>
